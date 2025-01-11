@@ -5,9 +5,9 @@ def fetch_product_data(code):
     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
     rsp = requests.get(url)
     if rsp.json()['status'] == 0:
-        return 1
+        return "Product not found."
     if "ingredients" in rsp.json()['product']['ecoscore_data']['missing'].keys():
-        return 2
+        return "Missing ingredients. This may not be a food item."
         
     product_data = {
         "ingredients": rsp.json()['product']['ingredients_text_en'],

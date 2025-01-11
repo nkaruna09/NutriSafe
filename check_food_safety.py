@@ -18,25 +18,7 @@ ailments = st.multiselect(
 
 # Barcode input 
 barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
-if not barcode.isdigit():
-    st.error("Enter valid barcode.")
-    
-else:
-    data = fetch_product_data(barcode)
-    print(data)
-    if data == 1:
-            st.error("Invalid barcode entered.")
-    elif data == 2:
-            st.error("The ingredient list for this item is not available or it may not be a food item.")
-    else:
-        # Safety check button 
-        if st.button("Test Food Safety"): 
-            if barcode: 
-                # Mock safety status for the example (this should be fetched from your logic)
-                
-                data = fetch_product_data(barcode)
-                ingredients = data['ingredients'] 
-                nutriments = data['nutriments']
+
 
 # Safety check button 
 if st.button("Test Food Safety"): 
@@ -54,7 +36,8 @@ if st.button("Test Food Safety"):
         if data == "Product not found." or data == "Missing ingredients. This may not be a food item.":
             st.error(data)
 
-        else:            
+        else:    
+            print(data)        
             ingredients = data['ingredients'] 
             nutriments = data['nutriments']
 
