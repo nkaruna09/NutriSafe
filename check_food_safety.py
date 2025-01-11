@@ -25,7 +25,7 @@ if st.button("Test Food Safety"):
         # Mock safety status for the example (this should be fetched from your logic)
         
         data = fetch_product_data(barcode)
-        ingredients = data['ingredients']
+        ingredients = data['ingredients'] 
         nutriments = data['nutriments']
 
         safety_status = check_healthiness(ingredients, nutriments, ailments)
