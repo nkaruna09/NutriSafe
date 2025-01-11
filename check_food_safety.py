@@ -18,27 +18,37 @@ ailments = st.multiselect(
 
 # Barcode input 
 barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
+if not barcode.isdigit():
+    st.error("Enter valid barcode.")
+    
+else:
+    data = fetch_product_data(barcode)
+    print(data)
+    if data == 1:
+            st.error("Invalid barcode entered.")
+    elif data == 2:
+            st.error("The ingredient list for this item is not available or it may not be a food item.")
+    else:
+        # Safety check button 
+        if st.button("Test Food Safety"): 
+            if barcode: 
+                # Mock safety status for the example (this should be fetched from your logic)
+                
+                data = fetch_product_data(barcode)
+                ingredients = data['ingredients'] 
+                nutriments = data['nutriments']
 
-# Safety check button 
-if st.button("Test Food Safety"): 
-    if barcode: 
-        # Mock safety status for the example (this should be fetched from your logic)
+                safety_status = check_healthiness(ingredients, nutriments, ailments)
+                print(safety_status)
+                if safety_status == "Green": # You would replace this with actual logic
+                    st.success("✅ This food is safe for you!")
+                elif safety_status == "Yellow": 
+                    st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
+                elif safety_status == "Red": 
+                    st.error("❌ This food is not safe for you.")
         
-        data = fetch_product_data(barcode)
-        ingredients = data['ingredients'] 
-        nutriments = data['nutriments']
-
-        safety_status = check_healthiness(ingredients, nutriments, ailments)
-        print(safety_status)
-        if safety_status == "Green": # You would replace this with actual logic
-            st.success("✅ This food is safe for you!")
-        elif safety_status == "Yellow": 
-            st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
-        elif safety_status == "Red": 
-            st.error("❌ This food is not safe for you.")
- 
-        st.subheader("Recommendations/Alternatives")
-        st.write(recommendations_alternatives(ingredients, nutriments, ailments)) 
-             
-    else: 
-        st.error("Please enter a barcode to test food safety.")
+                st.subheader("Recommendations/Alternatives")
+                st.write(recommendations_alternatives(ingredients, nutriments, ailments)) 
+                    
+            else: 
+                st.error("Please enter a barcode to test food safety.")
