@@ -42,4 +42,3 @@ if st.button("Test Food Safety"):
              
     else: 
         st.error("Please enter a barcode to test food safety.")
-        
