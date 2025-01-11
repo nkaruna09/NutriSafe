@@ -41,7 +41,7 @@ def recommendations_alternatives(ingredients, nutrition_data, disease):
             model='command-r-08-2024',  # Choose the model size you prefer (xlarge is a good balance)
             prompt=prompt,
             max_tokens=150  # Limit the response length to 150 tokens
-        )
+        ) 
         
         # Extract the generated text (healthiness classification)
         recommendation = response.generations[0].text.strip()

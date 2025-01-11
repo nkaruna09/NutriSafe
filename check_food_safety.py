@@ -36,7 +36,7 @@ if st.button("Test Food Safety"):
             st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
         elif safety_status == "Red": 
             st.error("❌ This food is not safe for you.")
-
+ 
         st.subheader("Recommendations/Alternatives")
         st.write(recommendations_alternatives(ingredients, nutriments, ailments)) 
              
