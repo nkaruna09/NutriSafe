@@ -15,12 +15,16 @@ st.set_page_config(page_title="NutriSafe", layout="centered")
 with open("styles.css") as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-st.title("Welcome to NutriSafe")
-st.write("""
-Your food safety assistant for managing health conditions.
-""")
+col1, col2 = st.columns([0.15, 0.85])
+
+with col1:
+    st.image("assets/nutrisafe_logo.png")
+with col2:
+    st.title("Welcome to NutriSafe!")
 
 # Configure sidebar for multiple pages 
 pages = [st.Page("how_it_works.py", title="Learn About NutriSafe"), st.Page("check_food_safety.py", title="Try NutriSafe Out")]
 pg = st.navigation(pages)
 pg.run()
+
+st.logo("assets/nutrisafe_small_logo.png")
