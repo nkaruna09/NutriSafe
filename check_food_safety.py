@@ -1,5 +1,9 @@
 import streamlit as st
 
+# Display the food safety check section
+st.header("Check Food Safety")
+    
+# Ailment/Disease selection
 ailments = st.multiselect(
     "Select your ailment/disease:",
     ["Diabetes", "Blood Pressure", "Celiac Disease", "Lactose Intolerance", "Phenylketonuria (PKU)", 
@@ -9,19 +13,22 @@ ailments = st.multiselect(
     help="Select one or more ailments to get recommendations"
 )
 
-barcode = st.text_input("Enter Barcode:", placeholder="e.g., 1234567890")
+# Barcode input 
+barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
 
+# Safety check button 
 if st.button("Test Food Safety"): 
     if barcode: 
-
-        if safety_status == "green": 
+        # Mock safety status for the example (this should be fetched from your logic)
+        if safety_status == "green": # You would replace this with actual logic
             st.success("✅ This food is safe for you!")
         elif safety_status == "yellow": 
             st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
         elif safety_status == "red": 
             st.error("❌ This food is not safe for you.")
 
-        st.subheader("Recommendations / Alternatives")
-        
+        st.subheader("Recommendations/Alternatives")
+        st.write("Here you can add recommendations or alternative products based on the selected ailment and food safety.")        
     else: 
         st.error("Please enter a barcode to test food safety.")
+        
