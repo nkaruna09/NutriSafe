@@ -3,7 +3,7 @@ import cohere
 
 api_key = "rFtQp6u9Dj0QIfwyKRAGGEZwbuZWOutMSoi4wMZ0"
 co = cohere.Client(api_key)
-
+ 
 def check_healthiness(ingredients, nutrition_data, disease):
     # Construct the prompt to send to Cohere API
     prompt = f"""
