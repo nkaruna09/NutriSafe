@@ -23,7 +23,7 @@ ailments = st.multiselect(
     help="Select one or more ailments to get recommendations"
 )
 
-barcode = st.text_input("Enter Barcode:", placeholder="e.g., 1234567890")
+barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
 
 if st.button("Test Food Safety"): 
     if barcode: 
