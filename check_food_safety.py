@@ -40,4 +40,3 @@ if st.button("Test Food Safety"):
         st.write("Here you can add recommendations or alternative products based on the selected ailment and food safety.")        
     else: 
         st.error("Please enter a barcode to test food safety.")
-        
