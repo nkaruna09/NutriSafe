@@ -20,6 +20,7 @@
 }
 .stButton button:hover {
     background-color: #43a047;  /* Darker green on hover */
+    color:orange; 
 }
 
 .stMultiSelect label {
