@@ -30,9 +30,9 @@ def check_healthiness(ingredients, nutrition_data, disease):
         return None
 
 # Example usage
-product_name = "Organic Apple Juice"
-ingredients = "Apple juice, Water, Natural flavor, Sugar"
-nutrition_data = "150 calories, 35g sugar, 0g fat, 5g sodium"
+#product_name = "Organic Apple Juice"
+#ingredients = "Apple juice, Water, Natural flavor, Sugar"
+#nutrition_data = "150 calories, 35g sugar, 0g fat, 5g sodium"
 
-health_status = check_healthiness(ingredients, nutrition_data, "Diabetes")
-print(f"Health Status: {health_status}")
+#health_status = check_healthiness(ingredients, nutrition_data, "Diabetes")
+#print(f"Health Status: {health_status}")

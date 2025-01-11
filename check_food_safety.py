@@ -1,4 +1,6 @@
 import streamlit as st
+from utils.analysis import check_healthiness
+from utils.barcode_lookup import fetch_product_data
 
 # Display the food safety check section
 st.header("Check Food Safety")
@@ -16,15 +18,22 @@ ailments = st.multiselect(
 # Barcode input 
 barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
 
+data = fetch_product_data(barcode)
+ingredients = data['ingredients']
+nutriments = data['nutriments']
+
 # Safety check button 
 if st.button("Test Food Safety"): 
     if barcode: 
         # Mock safety status for the example (this should be fetched from your logic)
-        if safety_status == "green": # You would replace this with actual logic
+
+        safety_status = check_healthiness(ingredients, nutriments, ailments)
+        print(safety_status)
+        if safety_status == "Green": # You would replace this with actual logic
             st.success("✅ This food is safe for you!")
-        elif safety_status == "yellow": 
+        elif safety_status == "Yellow": 
             st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
-        elif safety_status == "red": 
+        elif safety_status == "Red": 
             st.error("❌ This food is not safe for you.")
 
         st.subheader("Recommendations/Alternatives")
