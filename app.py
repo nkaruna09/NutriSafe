@@ -72,7 +72,7 @@ elif st.session_state.page == "Check Food Safety":
             elif safety_status == "red": 
                 st.error("❌ This food is not safe for you.")
             
-            st.subheader("Recommendations / Alternatives")
+            st.subheader("Recommendations/Alternatives")
             st.write("Here you can add recommendations or alternative products based on the selected ailment and food safety.")
 
         else:
