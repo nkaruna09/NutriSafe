@@ -6,7 +6,9 @@ def fetch_product_data(code):
     x = requests.get(url)
     if x.json()['status'] == 0:
         return "Product not found."
-        
+    if "ingredients" in x.json()['product']['ecoscore_data']['missing'].keys():
+        return "Missing ingredients. This may not be a food item."
     ingredients = x.json()['product']['ingredients_text']
     return ingredients
 
+print(fetch_product_data("09661951262"))
