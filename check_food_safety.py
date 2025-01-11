@@ -19,14 +19,14 @@ ailments = st.multiselect(
 # Barcode input 
 barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
 
-data = fetch_product_data(barcode)
-ingredients = data['ingredients']
-nutriments = data['nutriments']
-
 # Safety check button 
 if st.button("Test Food Safety"): 
     if barcode: 
         # Mock safety status for the example (this should be fetched from your logic)
+        
+        data = fetch_product_data(barcode)
+        ingredients = data['ingredients']
+        nutriments = data['nutriments']
 
         safety_status = check_healthiness(ingredients, nutriments, ailments)
         print(safety_status)

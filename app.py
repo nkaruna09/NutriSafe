@@ -17,7 +17,7 @@ with open("styles.css") as f:
 
 st.title("Welcome to NutriSafe")
 st.write("""
-Your food safety assistant for managing health conditions
+Your food safety assistant for managing health conditions.
 """)
 
 # Configure sidebar for multiple pages 
