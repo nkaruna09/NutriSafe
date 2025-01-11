@@ -21,24 +21,35 @@ barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 123
 
 # Safety check button 
 if st.button("Test Food Safety"): 
+
+    try:
+        int(barcode)
+    except ValueError:
+        barcode = None
+
     if barcode: 
         # Mock safety status for the example (this should be fetched from your logic)
         
         data = fetch_product_data(barcode)
-        ingredients = data['ingredients'] 
-        nutriments = data['nutriments']
 
-        safety_status = check_healthiness(ingredients, nutriments, ailments)
-        print(safety_status)
-        if safety_status == "Green": # You would replace this with actual logic
-            st.success("✅ This food is safe for you!")
-        elif safety_status == "Yellow": 
-            st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
-        elif safety_status == "Red": 
-            st.error("❌ This food is not safe for you.")
- 
-        st.subheader("Recommendations/Alternatives")
-        st.write(recommendations_alternatives(ingredients, nutriments, ailments)) 
+        if data == "Product not found." or data == "Missing ingredients. This may not be a food item.":
+            st.error(data)
+
+        else:            
+            ingredients = data['ingredients'] 
+            nutriments = data['nutriments']
+
+            safety_status = check_healthiness(ingredients, nutriments, ailments)
+            print(safety_status)
+            if safety_status == "Green": # You would replace this with actual logic
+                st.success("✅ This food is safe for you!")
+            elif safety_status == "Yellow": 
+                st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
+            elif safety_status == "Red": 
+                st.error("❌ This food is not safe for you.")
+    
+            st.subheader("Recommendations/Alternatives")
+            st.write(recommendations_alternatives(ingredients, nutriments, ailments)) 
              
     else: 
         st.error("Please enter a barcode to test food safety.")
