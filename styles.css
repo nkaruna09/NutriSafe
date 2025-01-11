@@ -1,0 +1,74 @@
+/* General page styling */
+.stApp {
+    background-color: #e8f5e9;  /* Light green background */
+    color: #1b5e20;  /* Dark green text color */
+}
+
+/* Title styling */
+.stTitle {
+    color: #388e3c;  /* Darker green for the title */
+}
+
+/* Button Styling */
+.stButton button {
+    background-color: #66bb6a;  /* Light green button */
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 12px 24px;
+    margin-top: 20px;
+}
+.stButton button:hover {
+    background-color: #43a047;  /* Darker green on hover */
+}
+
+.stMultiSelect label {
+    color: #1b5e20;  /* Dark green text */
+}
+
+.stTextInput label {
+    color: #1b5e20;  /* Dark green text */
+}
+
+/* Input field styling */
+.stTextInput input {
+    border: 1px solid #66bb6a;  /* Light green border */
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Success, Warning, Error Messages */
+.stSuccess {
+    background-color: #388e3c;  /* Green background for success */
+    color: white;
+}
+.stWarning {
+    background-color: #ffeb3b;  /* Yellow background for warnings */
+}
+.stError {
+    background-color: #d32f2f;  /* Red background for errors */
+    color: white;
+}
+
+/* Sidebar styling */
+.stSidebar {
+    background-color: #f1f8e9;  /* Light green background for sidebar */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Recommendations Section */
+.stText {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Hover Effect for Links */
+a {
+    color: #388e3c;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
