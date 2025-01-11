@@ -1,6 +1,7 @@
 import streamlit as st
 from utils.analysis import check_healthiness
 from utils.barcode_lookup import fetch_product_data
+from utils.analysis import recommendations_alternatives
 
 # Display the food safety check section
 st.header("Check Food Safety")
@@ -37,7 +38,8 @@ if st.button("Test Food Safety"):
             st.error("❌ This food is not safe for you.")
 
         st.subheader("Recommendations/Alternatives")
-        st.write("Here you can add recommendations or alternative products based on the selected ailment and food safety.")        
+        st.write(recommendations_alternatives(ingredients, nutriments, ailments)) 
+             
     else: 
         st.error("Please enter a barcode to test food safety.")
         
