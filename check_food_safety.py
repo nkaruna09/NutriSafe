@@ -81,6 +81,8 @@ if st.button("Test Food Safety"):
             # Display recommendations
             st.subheader("Recommendations/Alternatives")
             st.write(recommendations_alternatives(ingredients, nutriments, user_allergen, food_allergens, ailments, safety_status))
+
     except ValueError as e:
         st.error("Please provide a valid barcode (text or image).")
+
 
