@@ -3,9 +3,7 @@ from utils.analysis import check_healthiness
 from utils.barcode_lookup import fetch_product_data
 from utils.analysis import recommendations_alternatives
 from utils.barcode_scanner import scan_barcode
-from install_zbar import install_zbar
 
-install_zbar()
 # Display the food safety check section
 st.header("Check Food Safety")
     
