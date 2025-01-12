@@ -7,8 +7,8 @@ co = cohere.Client(api_key)
 def check_healthiness(ingredients, nutrition_data, user_allergen, food_allergens, disease):
     # Prompt to send to Cohere API
     prompt = f"""
-    Ingredients: {ingredients}, Nutrition: {nutrition_data}, Allergens: {food_allergens}
-    Classify the healthiness of this product based on its nutritional content and its compatibility with a person with {disease} and has these allergens: {user_allergen}.
+    Ingredients: {ingredients}, Nutrition: {nutrition_data}, Allergies: {food_allergens}
+    Classify the healthiness of this product based on its nutritional content and its compatibility with a person with {disease} and with these allergies: {user_allergen}.
     Return one of the following labels: Green (healthy), Yellow (moderately healthy/safe), Red (unhealthy/not safe).
     If food contains the user's allergen, automatically return Red.
     Only state the label. Do not provide explaination or description.

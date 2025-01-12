@@ -3,6 +3,7 @@ from utils.analysis import check_healthiness
 from utils.barcode_lookup import fetch_product_data
 from utils.analysis import recommendations_alternatives
 from utils.barcode_scanner import scan_barcode
+import matplotlib.pyplot as plt
 
 # Display the food safety check section
 st.header("Check Food Safety")
@@ -71,12 +72,32 @@ if st.button("Test Food Safety"):
             
             # Check healthiness
             safety_status = check_healthiness(ingredients, nutriments, user_allergen, food_allergens, ailments)
+            
             if safety_status == "Green":
                 st.success("✅ This food is safe for you!")
             elif safety_status == "Yellow":
                 st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
             elif safety_status == "Red":
                 st.error("❌ This food is not safe for you.")
+
+            if "ingredient_breakdown" in data.keys():
+                ingredient_breakdown = data["ingredient_breakdown"]
+
+                labels = list(ingredient_breakdown.keys())
+                sizes = list(ingredient_breakdown.values())
+
+                # Create a Streamlit app with a pie chart
+                st.subheader("Ingredient Composition Pie Chart")
+
+                # Create the pie chart
+                fig, ax = plt.subplots()
+                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+                ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
+                fig.patch.set_facecolor('#e8f5e9')
+
+
+                # Display the pie chart in Streamlit
+                st.pyplot(fig)
             
             # Display recommendations
             st.subheader("Recommendations/Alternatives")
