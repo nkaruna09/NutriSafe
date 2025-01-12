@@ -29,6 +29,14 @@ def display_chat():
         elif message['role'] == 'ai':
             st.markdown(f"**AI HEALTH COACH**: {message['text']}")
 
+# Disclaimer 
+st.write("""DISCLAIMER: Any information provided by this AI chatbot is for informational purposes only and 
+         should not be considered as professional medical advice. Always consult a qualified healthcare 
+         professional before making any important decisions related to your health, treatment, or well-being. 
+         The chatbot does not diagnose conditions, provide prescriptions, or offer personalized medical 
+         recommendations. By using this service, you acknowledge that any actions you take based on the 
+         information provided are at your own risk.""")
+
 # Handle user input
 user_input = st.text_input("Type your question here:")
 
