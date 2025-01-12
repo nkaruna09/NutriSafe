@@ -5,8 +5,8 @@ import pandas as pd
 data = {
     "Barcode": ["123456789", "987654321", "456789123"],
     "Product Name": ["T-Shirt", "Sneakers", "Backpack"],
-    "Color Received": ["Red", "Blue", "Black"],
-    "Recommendation": ["Try White next time!", "Consider Green for variety.", "Explore Navy Blue options."],
+    "Safety": ["Red", "Blue", "Black"],
+    "Recommendation/Alternatives": ["Try White next time!", "Consider Green for variety.", "Explore Navy Blue options."],
 }
 
 # Convert data to a DataFrame
