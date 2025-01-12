@@ -29,10 +29,10 @@ def check_healthiness(ingredients, nutrition_data, disease):
         print(f"An error occurred: {e}")
         return None
     
-def recommendations_alternatives(ingredients, nutrition_data, disease): 
+def recommendations_alternatives(ingredients, nutrition_data, disease, safety): 
     prompt = f"""
     Ingredients: {ingredients}, Nutrition: {nutrition_data}
-    I have this {disease}. Please give your suggested recommendation this food or provide an alternative food instead. Say this in under 100 words. 
+    I have this {disease}. You said this food is {safety} for me. Explain why. If unsafe or moderately safe, provide healthier alternatives (under 100 words). 
     """
 
     try:
