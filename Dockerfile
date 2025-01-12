@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 # Install system dependencies for zbar
-RUN apt-get update && apt-get install -y \
+RUN sudo apt-get update && sudo apt-get install -y \
     zbar-tools \
     libzbar0 \
     && rm -rf /var/lib/apt/lists/*
