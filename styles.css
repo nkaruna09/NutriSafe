@@ -73,3 +73,39 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
+/* Green theme for segmented control */
+.streamlit-expanderHeader {
+    background-color: #34a853;
+    color: white;
+}
+
+/* Style the segmented control background */
+.stSegmentedControl {
+    background-color: #34a853;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Style the buttons inside the segmented control */
+.stSegmentedControl .css-1uwkcib {
+    color: white;
+    background-color: #34a853;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 2px solid #34a853;
+    width: 100%;
+}
+
+/* Style for the active segment (selected button) */
+.stSegmentedControl .css-1uwkcib:hover {
+    background-color: #188038;
+    border-color: #188038;
+}
+
+.stSegmentedControl .css-1uwkcib.stActive {
+    background-color: #188038;
+    border-color: #188038;
+}
