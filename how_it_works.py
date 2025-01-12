@@ -1,5 +1,6 @@
 import streamlit as st
 
+# Display how it works section
 st.subheader("How NutriSafe Works")
 st.write("""
     1. **Select your ailment/disease** and any **allergens** from the options.

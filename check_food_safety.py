@@ -24,8 +24,8 @@ user_allergen = st.multiselect(
 )
 
 # Barcode input 
-barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
-uploaded_file = st.file_uploader("Upload a barcode image", type=["png", "jpg", "jpeg"])
+barcode = st.text_input("Enter barcode number of food product:", placeholder="e.g., 1234567890")
+uploaded_file = st.file_uploader("Or upload a barcode image:", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
     barcode = scan_barcode(uploaded_file)
