@@ -20,21 +20,34 @@ ailments = st.multiselect(
 # Allergen selection
 user_allergen = st.multiselect(
     "Select any food allergies:",
-    ["Peanuts", "Tree nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"], 
+    ["Peanuts", "Tree Nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"], 
     help="Select any allergens you might have."
 )
 
 # Barcode input method selection
 method = st.radio(
     "Choose how to input the barcode:",
-    ("Enter barcode as text", "Upload a barcode image")
+    ("Enter barcode number as text", "Upload a barcode image")
 )
 
 barcode = None
-if method == "Enter barcode as text":
+if method == "Enter barcode number as text":
     barcode = st.text_input("Enter barcode number of food product:", placeholder="e.g., 1234567890")
 elif method == "Upload a barcode image":
-    uploaded_file = st.file_uploader("Or upload a barcode image:", type=["png", "jpg", "jpeg"])
+    # Inject CSS for custom styling
+    st.markdown(
+        """
+        <style>
+        /* Target the file uploader label to change the font color */
+        .stFileUploader label {
+            color: green;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    uploaded_file = st.file_uploader("Upload a barcode image:", type=["png", "jpg", "jpeg"])
     if uploaded_file is not None:
         barcode = scan_barcode(uploaded_file)
 
