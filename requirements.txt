@@ -3,3 +3,4 @@ requests
 cohere
 pyzbar
 pillow
+zbar
