@@ -40,7 +40,7 @@ if product_name:
             st.subheader(recipe["title"])
             if "image" in recipe:
                 st.image(recipe["image"], use_container_width=True)
-            st.write(f"[View Full Recipe](https://spoonacular.com/recipes/{recipe['id']})")
+            st.write(f"[View Full Recipe](https://spoonacular.com/recipes/{product_name}-{recipe['id']})")
     else:
         st.write("No recipes found for this product name. Try another!")
 else:
