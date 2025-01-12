@@ -87,7 +87,7 @@ if st.button("Test Food Safety"):
             if "ingredient_breakdown" in data.keys():
                 ingredient_breakdown = data["ingredient_breakdown"]
 
-                labels = list(ingredient_breakdown.keys())
+                labels = list(map(lambda x: x.title(), ingredient_breakdown.keys()))
                 sizes = list(ingredient_breakdown.values())
 
                 # Create a Streamlit app with a pie chart
