@@ -30,7 +30,7 @@ product_name = st.text_input("Enter the product name:", placeholder="e.g., Choco
 
 if product_name:
     st.write(f"Searching for recipes using **{product_name}**...")
-    
+     
     # Fetch recipes
     recipes = fetch_recipes_by_name(product_name)
     

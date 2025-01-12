@@ -10,18 +10,18 @@ st.header("Check Food Safety")
 # Ailment/Disease selection
 ailments = st.multiselect(
     "Select your ailment/disease:",
-    ["Diabetes", "Blood Pressure", "Celiac Disease", "Lactose Intolerance", "Phenylketonuria (PKU)", 
-     "Hypertension", "Hyperlipidemia", "Irritable Bowel Syndrome (IBS)", "Crohn's Disease", "Gallbladder Disease",
-     "Chronic Kidney Disease", "Hepatic Encephalopathy", "Multiple Sclerosis", "Hashimoto's Thyroiditis",
-     "Gout", "Anemia", "Galactosemia", "Fructose Intolerance", "Obesity", "Epilepsy", "Cancer"],
+    ["Anemia", "Cancer", "Celiac Disease", "Chronic Kidney Disease", "Crohn's Disease", "Diabetes", "Epilepsy", 
+     "Fructose Intolerance", "Galactosemia", "Gallbladder Disease", "Gout", "Hashimoto's Thyroiditis", 
+     "Hepatic Encephalopathy", "Hyperlipidemia", "Hypertension", "Hypotension", "Irritable Bowel Syndrome (IBS)",
+     "Lactose Intolerance", "Phenylketonuria (PKU)", "Multiple Sclerosis", "Obesity"],
     help="Select one or more ailments/diseases to get recommendations."
 )
 
 # Allergen selection
 user_allergen = st.multiselect(
     "Select any food allergies:",
-    ["Peanuts", "Tree Nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"], 
-    help="Select any allergens you might have."
+    ["Dairy (Milk)", "Eggs", "Fish", "Mustard", "Peanuts", "Sesame", "Shellfish", "Soy", "Sulfites", "Tree Nuts", "Wheat (Gluten)"], 
+    help="Select any allergies you might have."
 )
 
 # Barcode input method selection
