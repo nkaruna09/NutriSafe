@@ -2,8 +2,8 @@ import streamlit as st
 
 st.subheader("How NutriSafe Works")
 st.write("""
-    1. **Select your ailment/disease** from the options.
-    2. **Enter the barcode** of the food product you want to check.
+    1. **Select your ailment/disease** and any **allergens** from the options.
+    2. **Enter or upload a picture of the barcode** of the food product you want to check.
     3. **Get the safety status** along with recommendations or alternatives.
     """)
 
