@@ -23,3 +23,4 @@ def scan_barcode(uploaded_file):
                 return barcode_data
         else:
             st.error("No barcodes found in the uploaded image.")
+            return "Error."
