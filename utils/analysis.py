@@ -13,7 +13,7 @@ def check_healthiness(ingredients, nutrition_data, user_allergen, food_allergens
     If food contains the user's allergen, automatically return Red.
     Only state the label. Do not provide explaination or description.
     """
-    
+     
     try:
         response = co.generate(
             model='command-r-08-2024',  
