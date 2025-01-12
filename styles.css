@@ -8,7 +8,7 @@
 .stTitle {
     color: #388e3c;  /* Darker green for the title */
 }
- 
+
 /* Button Styling */
 .stButton button {
     background-color: #66bb6a;  /* Light green button */
@@ -67,15 +67,11 @@
 
 /* Hover Effect for Links */
 a {
-    color: white;
+    color: #388e3c;
     text-decoration: none;
 }
 a:hover {
     text-decoration: underline;
-}
-
-.stButton button:active {
-    color:white;
 }
 
 
