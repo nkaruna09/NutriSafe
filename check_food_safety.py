@@ -35,7 +35,7 @@ if st.button("Test Food Safety"):
 
     try:
         int(barcode)
-    except ValueError:
+    except ValueError or TypeError:
         barcode = None
 
     if barcode: 
