@@ -72,13 +72,17 @@ if st.button("Test Food Safety"):
             
             # Check healthiness
             safety_status = check_healthiness(ingredients, nutriments, user_allergen, food_allergens, ailments)
+            safety = ""
             
             if safety_status == "Green":
                 st.success("✅ This food is safe for you!")
+                safety = "safe"
             elif safety_status == "Yellow":
                 st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
+                safety = "moderately safe"
             elif safety_status == "Red":
                 st.error("❌ This food is not safe for you.")
+                safety = "unsafe"
 
             if "ingredient_breakdown" in data.keys():
                 ingredient_breakdown = data["ingredient_breakdown"]
@@ -101,7 +105,7 @@ if st.button("Test Food Safety"):
             
             # Display recommendations
             st.subheader("Recommendations/Alternatives")
-            st.write(recommendations_alternatives(ingredients, nutriments, user_allergen, food_allergens, ailments, safety_status))
+            st.write(recommendations_alternatives(ingredients, nutriments, user_allergen, food_allergens, ailments, safety))
 
     except ValueError as e:
         st.error("Please provide a valid barcode (text or image).")
