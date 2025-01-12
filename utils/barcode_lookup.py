@@ -16,7 +16,7 @@ def fetch_product_data(code):
         for ingredient in rsp.json()['product']['ingredients']:
             if "percent_estimate" in ingredient:
                 hasEstimates = True
-                if ingredient['percent_estimate'] < 1:
+                if ingredient['percent_estimate'] < 4:
                     if "other" not in ingredient_breakdown.keys():
                         ingredient_breakdown['other'] = ingredient['percent_estimate']
                     else:
