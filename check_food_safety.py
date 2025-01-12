@@ -10,17 +10,17 @@ st.header("Check Food Safety")
 # Ailment/Disease selection
 ailments = st.multiselect(
     "Select your ailment/disease:",
-    ["Diabetes", "Blood Pressure", "Celiac Disease", "Lactose Intolerance", "Phenylketonuria (PKU)", 
-     "Hypertension", "Hyperlipidemia", "Irritable Bowel Syndrome (IBS)", "Crohn's Disease", "Gallbladder Disease",
+    ["Blood Pressure", "Cancer", "Celiac Disease", "Crohn's Disease", "Diabetes", "Gallbladder Disease", "Lactose Intolerance", "Phenylketonuria (PKU)", 
+     "Hypertension", "Hyperlipidemia", "Irritable Bowel Syndrome (IBS)",
      "Chronic Kidney Disease", "Hepatic Encephalopathy", "Multiple Sclerosis", "Hashimoto's Thyroiditis",
-     "Gout", "Anemia", "Galactosemia", "Fructose Intolerance", "Obesity", "Epilepsy", "Cancer"],
+     "Gout", "Anemia", "Galactosemia", "Fructose Intolerance", "Obesity", "Epilepsy"],
     help="Select one or more ailments/diseases to get recommendations."
 )
 
 # Allergen selection
 user_allergen = st.multiselect(
     "Select any food allergies:",
-    ["Peanuts", "Tree Nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"], 
+    ["Dairy (Milk)", "Eggs", "Fish", "Mustard", "Peanuts", "Sesame", "Shellfish", "Soy", "Sulfites", "Tree Nuts", "Wheat (Gluten)"], 
     help="Select any allergens you might have."
 )
 
