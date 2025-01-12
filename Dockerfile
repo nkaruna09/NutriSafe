@@ -1,8 +1,8 @@
-# Use Python base image
+# Use the official Python base image
 FROM python:3.10-slim
 
 # Install system dependencies for zbar
-RUN sudo apt-get update && sudo apt-get install -y \
+RUN apt-get update && apt-get install -y \
     zbar-tools \
     libzbar0 \
     && rm -rf /var/lib/apt/lists/*
@@ -10,17 +10,17 @@ RUN sudo apt-get update && sudo apt-get install -y \
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements.txt file to the container
+# Copy your requirements.txt file into the container
 COPY requirements.txt .
 
-# Install the Python dependencies from requirements.txt
+# Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the app into the container
+# Copy the rest of your app files into the container
 COPY . .
 
-# Expose the port that Streamlit uses
+# Expose port 8501 (Streamlit's default)
 EXPOSE 8501
 
-# Run the Streamlit app
+# Start Streamlit app when the container is run
 CMD ["streamlit", "run", "app.py"]
