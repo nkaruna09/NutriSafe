@@ -21,7 +21,7 @@ pages = {
         st.Page("how_it_works.py", title="Learn About NutriSafe"), 
         st.Page("check_food_safety.py", title="Try NutriSafe Out"),
     ],
-    "Want more health advice?": [st.Page("AI_chat_bot.py", title="Talk to our AI-chat bot!")],
+    "Have more health questions?": [st.Page("AI_chat_bot.py", title="Talk to our AI-chat bot!")],
 }
 
 pg = st.navigation(pages)
