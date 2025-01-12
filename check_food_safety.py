@@ -16,9 +16,13 @@ ailments = st.multiselect(
     help="Select one or more ailments to get recommendations"
 )
 
+user_allergen = st.multiselect(
+    "Select any food allergies:",
+    ["Peanuts", "Tree nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"]
+)
+
 # Barcode input 
 barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
-
 
 # Safety check button 
 if st.button("Test Food Safety"): 
@@ -40,8 +44,9 @@ if st.button("Test Food Safety"):
             print(data)        
             ingredients = data['ingredients'] 
             nutriments = data['nutriments']
+            food_allergens = data['allergens']
             safety = ""
-            safety_status = check_healthiness(ingredients, nutriments, ailments)
+            safety_status = check_healthiness(ingredients, nutriments, user_allergen, food_allergens, ailments)
             print(safety_status)
             if safety_status == "Green": # You would replace this with actual logic
                 st.success("✅ This food is safe for you!")
@@ -54,7 +59,7 @@ if st.button("Test Food Safety"):
                 safety = "not safe"
     
             st.subheader("Recommendations/Alternatives")
-            st.write(recommendations_alternatives(ingredients, nutriments, ailments, safety)) 
+            st.write(recommendations_alternatives(ingredients, nutriments, user_allergen, food_allergens, ailments, safety)) 
              
     else: 
         st.error("Please enter a barcode to test food safety.")

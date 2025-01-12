@@ -4,19 +4,19 @@ import cohere
 api_key = "rFtQp6u9Dj0QIfwyKRAGGEZwbuZWOutMSoi4wMZ0"
 co = cohere.Client(api_key)
  
-def check_healthiness(ingredients, nutrition_data, disease):
+def check_healthiness(ingredients, nutrition_data, user_allergen, food_allergens, disease):
     # Prompt to send to Cohere API
     prompt = f"""
-    Ingredients: {ingredients}, Nutrition: {nutrition_data}
-    Classify the healthiness of this product based on its nutritional content and its compatibility with a person with {disease}.
-    Return one of the following labels: Green (healthy), Yellow (moderately healthy), Red (unhealthy).
+    Ingredients: {ingredients}, Nutrition: {nutrition_data}, Allergens: {food_allergens}
+    Classify the healthiness of this product based on its nutritional content and its compatibility with a person with {disease} and has these allergens: {user_allergen}.
+    Return one of the following labels: Green (healthy), Yellow (moderately healthy/safe), Red (unhealthy/not safe).
+    If food contains the user's allergen, automatically return Red.
     Only state the label. Do not provide explaination or description.
     """
     
     try:
-        # Use Cohere's generate function to get a response
         response = co.generate(
-            model='command-r-08-2024',  # Choose the model size you prefer (xlarge is a good balance)
+            model='command-r-08-2024',  
             prompt=prompt,
             max_tokens=150  # Limit the response length to 150 tokens
         )
@@ -29,16 +29,15 @@ def check_healthiness(ingredients, nutrition_data, disease):
         print(f"An error occurred: {e}")
         return None
     
-def recommendations_alternatives(ingredients, nutrition_data, disease, safety): 
+def recommendations_alternatives(ingredients, nutrition_data, user_allergen, food_allergens, disease, safety): 
     prompt = f"""
-    Ingredients: {ingredients}, Nutrition: {nutrition_data}
-    I have this {disease}. You said this food is {safety} for me. Explain why. If unsafe or moderately safe, provide healthier alternatives (under 100 words). 
+    Ingredients: {ingredients}, Nutrition: {nutrition_data}, Allergens: {food_allergens}
+    I have this {disease} and these allergens {user_allergen}. You said this food is {safety} for me. Explain why. If unsafe or moderately safe, provide healthier alternatives (under 100 words). 
     """
 
     try:
-        # Use Cohere's generate function to get a response
         response = co.generate(
-            model='command-r-08-2024',  # Choose the model size you prefer (xlarge is a good balance)
+            model='command-r-08-2024',  
             prompt=prompt,
             max_tokens=150  # Limit the response length to 150 tokens
         ) 
