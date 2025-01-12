@@ -40,18 +40,21 @@ if st.button("Test Food Safety"):
             print(data)        
             ingredients = data['ingredients'] 
             nutriments = data['nutriments']
-
+            safety = ""
             safety_status = check_healthiness(ingredients, nutriments, ailments)
             print(safety_status)
             if safety_status == "Green": # You would replace this with actual logic
                 st.success("✅ This food is safe for you!")
+                safety = "safe"
             elif safety_status == "Yellow": 
                 st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
+                safety = "moderately safe"
             elif safety_status == "Red": 
                 st.error("❌ This food is not safe for you.")
+                safety = "not safe"
     
             st.subheader("Recommendations/Alternatives")
-            st.write(recommendations_alternatives(ingredients, nutriments, ailments)) 
+            st.write(recommendations_alternatives(ingredients, nutriments, ailments, safety)) 
              
     else: 
         st.error("Please enter a barcode to test food safety.")

@@ -3,12 +3,6 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-#import requests
-#import openai
-#from utils.barcode_lookup import fetch_product_data, is_food_item
-#from utils.drug_list import fetch_drug_list
-#from utils.analysis import analyze_interaction
-
 st.set_page_config(page_title="NutriSafe", layout="centered")
 
 # Load Custom CSS
