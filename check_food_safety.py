@@ -2,6 +2,7 @@ import streamlit as st
 from utils.analysis import check_healthiness
 from utils.barcode_lookup import fetch_product_data
 from utils.analysis import recommendations_alternatives
+from utils.barcode_scanner import scan_barcode
 
 # Display the food safety check section
 st.header("Check Food Safety")
@@ -23,7 +24,11 @@ user_allergen = st.multiselect(
 
 # Barcode input 
 barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
+uploaded_file = st.file_uploader("Upload a barcode image", type=["png", "jpg", "jpeg"])
 
+if uploaded_file is not None:
+    barcode = scan_barcode(uploaded_file)
+    
 # Safety check button 
 if st.button("Test Food Safety"): 
 
