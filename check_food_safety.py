@@ -13,12 +13,13 @@ ailments = st.multiselect(
      "Hypertension", "Hyperlipidemia", "Irritable Bowel Syndrome (IBS)", "Crohn's Disease", "Gallbladder Disease",
      "Chronic Kidney Disease", "Hepatic Encephalopathy", "Multiple Sclerosis", "Hashimoto's Thyroiditis",
      "Gout", "Anemia", "Galactosemia", "Fructose Intolerance", "Obesity", "Epilepsy", "Cancer"],
-    help="Select one or more ailments to get recommendations"
+    help="Select one or more ailments/diseases to get recommendations."
 )
 
 user_allergen = st.multiselect(
     "Select any food allergies:",
-    ["Peanuts", "Tree nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"]
+    ["Peanuts", "Tree nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"], 
+    help="Select any allergens you might have."
 )
 
 # Barcode input 
@@ -33,7 +34,6 @@ if st.button("Test Food Safety"):
         barcode = None
 
     if barcode: 
-        # Mock safety status for the example (this should be fetched from your logic)
         
         data = fetch_product_data(barcode)
 
@@ -48,7 +48,7 @@ if st.button("Test Food Safety"):
             safety = ""
             safety_status = check_healthiness(ingredients, nutriments, user_allergen, food_allergens, ailments)
             print(safety_status)
-            if safety_status == "Green": # You would replace this with actual logic
+            if safety_status == "Green": 
                 st.success("✅ This food is safe for you!")
                 safety = "safe"
             elif safety_status == "Yellow": 
