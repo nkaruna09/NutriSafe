@@ -22,7 +22,7 @@ if 'messages' not in st.session_state:
     st.session_state['messages'] = []
 
 # Function to display messages in chat-like format
-def display_chat(): 
+def display_chat():
     for message in st.session_state['messages']:
         if message['role'] == 'user':
             st.markdown(f"**You**: {message['text']}")

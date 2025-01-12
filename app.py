@@ -10,7 +10,7 @@ with open("styles.css") as f:
 
 col1, col2 = st.columns([0.15, 0.85])
 
-with col1:  
+with col1:
     st.image("assets/nutrisafe_logo.png")
 with col2:
     st.title("Welcome to NutriSafe!")
