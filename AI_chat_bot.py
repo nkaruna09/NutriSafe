@@ -8,7 +8,7 @@ co = cohere.Client('rFtQp6u9Dj0QIfwyKRAGGEZwbuZWOutMSoi4wMZ0')  # Replace with y
 def get_cohere_response(user_input):
     response = co.generate(
         model='command-r-08-2024',  # Cohere's model for generating text
-        prompt=f"User is asking for health advice. Answer based on the user's health goals and preferences.\nUser: {user_input}\nAI:",
+        prompt=f"User is asking for health advice. Answer based on the user's health goals and preferences. If the user asks a non-health//food related question, say that you cannot respond. \nUser: {user_input}\nAI:",
         max_tokens=150,
         temperature=0.7,
     )
@@ -25,9 +25,9 @@ if 'messages' not in st.session_state:
 def display_chat():
     for message in st.session_state['messages']:
         if message['role'] == 'user':
-            st.markdown(f"**You**: {message['text']}")
+            st.markdown(f"**YOU**: {message['text']}")
         elif message['role'] == 'ai':
-            st.markdown(f"**AI Health Coach**: {message['text']}")
+            st.markdown(f"**AI HEALTH COACH**: {message['text']}")
 
 # Handle user input
 user_input = st.text_input("Type your question here:")
