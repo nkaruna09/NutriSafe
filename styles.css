@@ -67,11 +67,15 @@
 
 /* Hover Effect for Links */
 a {
-    color: #388e3c;
+    color: white;
     text-decoration: none;
 }
 a:hover {
     text-decoration: underline;
+}
+
+.stButton button:active {
+    color:white;
 }
 
 
