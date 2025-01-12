@@ -1,3 +1,5 @@
 streamlit
 requests
 cohere
+pyzbar
+pillow

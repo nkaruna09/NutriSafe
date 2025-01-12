@@ -1,5 +1,4 @@
 import requests
-import json
 
 def fetch_product_data(code):
     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
@@ -16,11 +15,3 @@ def fetch_product_data(code):
         
     }
     return product_data
-
-
-
-data = fetch_product_data("42208556")
-
-ingredients = data['ingredients']
-allergens = data['allergens']
-nutriments = data['nutriments']

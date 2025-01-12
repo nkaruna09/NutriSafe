@@ -17,54 +17,70 @@ ailments = st.multiselect(
     help="Select one or more ailments/diseases to get recommendations."
 )
 
+# Allergen selection
 user_allergen = st.multiselect(
     "Select any food allergies:",
-    ["Peanuts", "Tree nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"], 
+    ["Peanuts", "Tree Nuts", "Dairy (Milk)", "Eggs", "Wheat (Gluten)", "Soy", "Fish", "Shellfish", "Sesame", "Mustard", "Sulfites"], 
     help="Select any allergens you might have."
 )
 
-# Barcode input 
-barcode = st.text_input("Enter barcode of food product:", placeholder="e.g., 1234567890")
-uploaded_file = st.file_uploader("Upload a barcode image", type=["png", "jpg", "jpeg"])
+# Barcode input method selection
+method = st.segmented_control(
+    "Choose how to input the barcode:",
+    options=["Enter barcode number as text", "Upload a barcode image"]
+)
 
-if uploaded_file is not None:
-    barcode = scan_barcode(uploaded_file)
-    
-# Safety check button 
-if st.button("Test Food Safety"): 
+barcode = None
+if method == "Enter barcode number as text":
+    barcode = st.text_input("Enter barcode number of food product:", placeholder="e.g., 1234567890")
+elif method == "Upload a barcode image":
+    # Inject CSS for custom styling
+    st.markdown(
+        """
+        <style>
+        /* Target the file uploader label to change the font color */
+        .stFileUploader label {
+            color: green;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
+    uploaded_file = st.file_uploader("Upload a barcode image:", type=["png", "jpg", "jpeg"])
+    if uploaded_file is not None:
+        barcode = scan_barcode(uploaded_file)
+
+# Safety check button
+if st.button("Test Food Safety"):
     try:
-        int(barcode)
-    except ValueError or TypeError:
-        barcode = None
-
-    if barcode: 
+        # Ensure the barcode is valid
+        if barcode is None or not str(barcode).isdigit():
+            raise ValueError("Invalid barcode")
         
+        # Fetch product data
         data = fetch_product_data(barcode)
 
-        if data == "Product not found." or data == "Missing ingredients. This may not be a food item.":
+        if data in ["Product not found.", "Missing ingredients. This may not be a food item."]:
             st.error(data)
-
-        else:    
-            print(data)        
-            ingredients = data['ingredients'] 
+        else:
+            # Extract relevant data
+            ingredients = data['ingredients']
             nutriments = data['nutriments']
             food_allergens = data['allergens']
-            safety = ""
+            
+            # Check healthiness
             safety_status = check_healthiness(ingredients, nutriments, user_allergen, food_allergens, ailments)
-            print(safety_status)
-            if safety_status == "Green": 
+            if safety_status == "Green":
                 st.success("✅ This food is safe for you!")
-                safety = "safe"
-            elif safety_status == "Yellow": 
+            elif safety_status == "Yellow":
                 st.warning("⚠️ This food is moderately safe. Consume in limited quantities.")
-                safety = "moderately safe"
-            elif safety_status == "Red": 
+            elif safety_status == "Red":
                 st.error("❌ This food is not safe for you.")
-                safety = "not safe"
-    
+            
+            # Display recommendations
             st.subheader("Recommendations/Alternatives")
-            st.write(recommendations_alternatives(ingredients, nutriments, user_allergen, food_allergens, ailments, safety)) 
-             
-    else: 
-        st.error("Please enter a barcode to test food safety.")
+            st.write(recommendations_alternatives(ingredients, nutriments, user_allergen, food_allergens, ailments, safety_status))
+    except ValueError as e:
+        st.error("Please provide a valid barcode (text or image).")
+
