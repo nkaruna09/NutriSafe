@@ -25,9 +25,9 @@ user_allergen = st.multiselect(
 )
 
 # Barcode input method selection
-method = st.radio(
+method = st.segmented_control(
     "Choose how to input the barcode:",
-    ("Enter barcode number as text", "Upload a barcode image")
+    options=["Enter barcode number as text", "Upload a barcode image"]
 )
 
 barcode = None
