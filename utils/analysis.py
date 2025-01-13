@@ -1,13 +1,24 @@
 
 import cohere
+from dotenv import load_dotenv
+import os
 
-api_key = "rFtQp6u9Dj0QIfwyKRAGGEZwbuZWOutMSoi4wMZ0"
+
+# Load the .env file
+load_dotenv()
+
+# Get the API key from the .env file
+api_key = os.getenv("COHERE_API_KEY")
+if not api_key:
+    raise ValueError("API key not found. Please add it to the .env file.")
+
+# Initialize the Cohere client
 co = cohere.Client(api_key)
  
 def check_healthiness(ingredients, nutrition_data, user_allergen, food_allergens, disease):
     # Prompt to send to Cohere API
     prompt = f"""
-    Ingredients: {ingredients}, Nutrition: {nutrition_data}, Allergies: {food_allergens}
+    Ingredients: {ingredients}, Nutrition: {nutrition_data}, Allergens in food: {food_allergens}
     Classify the healthiness of this product based on its nutritional content and its compatibility with a person with {disease} and with these allergies: {user_allergen}.
     Return one of the following labels: Green (healthy), Yellow (moderately healthy/safe), Red (unhealthy/not safe).
     If food contains the user's allergen, automatically return Red.
